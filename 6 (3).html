@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تحديد المستوى التفاعلي الشامل | إعداد الأستاذ ماجد السويهري - Langua Learn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-coral: #e88d67;
+            --brand-purple: #3b0764;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.10) 0%, transparent 35%),
+                radial-gradient(circle at 90% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.10) 0%, transparent 45%),
+                #f8fafc;
+            min-height: 100vh;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        .en-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Hand-drawn circle effect for Section 3 (Choose the correct answer) */
+        .circle-choice-btn {
+            position: relative;
+            transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hand-circle-svg {
+            position: absolute;
+            inset: -7px -12px;
+            width: calc(100% + 24px);
+            height: calc(100% + 14px);
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.82);
+            transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .circle-choice-btn.circled .hand-circle-svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .circle-choice-btn.circled .hand-circle-path {
+            stroke-dasharray: 360;
+            stroke-dashoffset: 0;
+            animation: drawCircleAnim 0.42s ease-out forwards;
+        }
+
+        @keyframes drawCircleAnim {
+            from { stroke-dashoffset: 360; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Checkmark pop animation for Section 1 */
+        @keyframes checkPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.22); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .check-pop {
+            animation: checkPop 0.26s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Highlight pulse when jumping from question navigator */
+        @keyframes highlightPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+            50% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.28); }
+        }
+
+        .pulse-focus {
+            animation: highlightPulse 1.2s ease-in-out 2;
+        }
+
+        /* Floating card hover */
+        .fantasy-card {
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+        .fantasy-card:hover {
+            transform: translateY(-3px);
+        }
+
+        @media print {
+            body {
+                background: #ffffff !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="pb-24">
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand & Teacher Identity -->
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-2xl border-2 border-orange-200 shadow-sm" dir="ltr">
+                    <svg class="w-10 h-10 shrink-0" viewBox="0 0 100 100" fill="none">
+                        <path d="M12 10 H42 L32 25 H26 V75 H42 L32 90 H12 V10 Z" fill="#e88d67"/>
+                        <path d="M46 10 H85 V88 H70 V25 H42 L46 10 Z" fill="#e88d67" opacity="0.9"/>
+                        <polygon points="15,47 50,33 85,47 50,61" fill="#3b0764"/>
+                        <path d="M32 55 V70 C32 76 68 76 68 70 V55 L50 63 L32 55 Z" fill="#4c1d95"/>
+                        <path d="M76 50 V68" stroke="#3b0764" stroke-width="3.5" stroke-linecap="round"/>
+                        <circle cx="76" cy="70" r="3.5" fill="#e88d67" stroke="#3b0764" stroke-width="2"/>
+                    </svg>
+                    <div class="leading-none text-left">
+                        <div class="en-font font-black text-sm tracking-wider text-[#e88d67]">LANGUA</div>
+                        <div class="en-font font-black text-sm tracking-wider text-[#3b0764]">LEARN</div>
+                        <div class="en-font text-[7px] font-bold text-[#e88d67]">Learn, Grow, Succeed</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h1 class="text-base sm:text-xl font-black text-slate-900">اختبار تحديد المستوى التفاعلي الشامل</h1>
+                        <span class="bg-emerald-100 text-emerald-900 text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-emerald-300">36 سؤالاً • 3 أقسام</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-extrabold text-indigo-900">إعداد الأستاذ: ماجد السويهري • Langua Learn Interactive Assessment</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                <!-- Live Progress Pill -->
+                <div class="bg-slate-100 border border-slate-200 rounded-2xl px-3.5 py-1.5 flex items-center gap-3">
+                    <div class="text-right">
+                        <div class="text-[11px] font-bold text-slate-500">الإنجاز الكلي</div>
+                        <div id="headerProgressText" class="text-xs sm:text-sm font-black text-indigo-700">0 / 36 سؤال</div>
+                    </div>
+                    <div class="w-20 sm:w-28 h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                        <div id="headerProgressBar" class="h-full bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Sound Toggle -->
+                <button id="soundToggleBtn" onclick="toggleSoundEffects()"
+                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-slate-200 transition flex items-center gap-1"
+                    title="تفعيل/كتم المؤثرات الصوتية">
+                    <span id="soundToggleIcon">🔊</span>
+                    <span class="hidden sm:inline">الصوت</span>
+                </button>
+
+                <!-- Submit & Grade Button -->
+                <button onclick="gradePlacementTest()"
+                    class="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5">
+                    <span>✅ اعتماد الإجابات وتحديد المستوى</span>
+                </button>
+
+                <!-- Print Button -->
+                <button onclick="printStudentResult()"
+                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-md transition flex items-center gap-1.5">
+                    <span>🖨️ طباعة النتيجة</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 pt-6">
+
+        <!-- Student Data & Fantasy Welcome Hero Banner -->
+        <section class="bg-gradient-to-r from-[#064e3b] via-[#1e1b4b] to-[#3b0764] text-white rounded-3xl p-5 sm:p-7 shadow-xl mb-6 relative overflow-hidden no-print">
+            <div class="absolute -left-10 -bottom-10 w-60 h-60 bg-emerald-400/15 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -top-12 w-48 h-48 bg-amber-400/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                <div class="lg:col-span-7 space-y-2.5">
+                    <div class="inline-flex flex-wrap items-center gap-2 bg-white/15 backdrop-blur-sm px-3.5 py-1 rounded-full text-xs font-extrabold text-amber-300 border border-white/20">
+                        <span>🦋 عالم الكائنات والمفردات التفاعلي</span>
+                        <span>•</span>
+                        <span>إعداد الأستاذ: ماجد السويهري</span>
+                    </div>
+                    <h2 class="text-xl sm:text-3xl font-black leading-tight">
+                        اختبار تحديد المستوى التفاعلي الشامل (36 سؤالاً)
+                    </h2>
+                    <p class="text-xs sm:text-sm text-emerald-100 font-semibold leading-relaxed">
+                        يشتمل الاختبار على <strong>36 سؤالاً</strong> موزعة على 3 أقسام مشوقة:
+                        <strong>(السؤال 1)</strong> 12 سؤالاً: ضع علامة صح (✓) للكلمة الصحيحة تحت كل صورة •
+                        <strong>(السؤال 2)</strong> 12 سؤالاً: أوجد الحرف الناقص في الكلمة •
+                        <strong>(السؤال 3)</strong> 12 سؤالاً: ضع دائرة حول الإجابة الصحيحة.
+                    </p>
+                </div>
+
+                <!-- Student Input Fields -->
+                <div class="lg:col-span-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-extrabold text-amber-200 mb-1">👤 اسم الطالب / الطالبة (Name):</label>
+                            <input id="studentNameInput" type="text" placeholder="اكتب اسمك الثلاثي هنا..."
+                                oninput="syncStudentInfo()"
+                                class="w-full bg-white text-slate-900 font-extrabold text-sm rounded-xl px-3.5 py-2 border-2 border-transparent focus:border-amber-400 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-extrabold text-amber-200 mb-1">🏫 الصف / الفصل (Class):</label>
+                            <input id="studentClassInput" type="text" placeholder="مثال: الصف الخامس / أ"
+                                oninput="syncStudentInfo()"
+                                class="w-full bg-white text-slate-900 font-extrabold text-sm rounded-xl px-3.5 py-2 border-2 border-transparent focus:border-amber-400 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs text-emerald-100 font-bold">
+                        <span>🎯 الدرجة الكلية: <strong>36 درجة (12 + 12 + 12)</strong></span>
+                        <button onclick="resetEntireTest()" class="text-rose-300 hover:text-rose-200 underline font-extrabold">
+                            🔄 إعادة تصفير الاختبار
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultDiagnosticSection" class="hidden mb-8 bg-white rounded-3xl border-4 border-indigo-600 shadow-2xl p-6 sm:p-8 transition-all no-print">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-slate-100 pb-5 mb-6">
+                <div class="flex items-center gap-4">
+                    <div id="resultLevelBadge" class="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-600 via-indigo-600 to-purple-700 text-white en-font font-black text-3xl flex flex-col items-center justify-center shadow-lg">
+                        <span>B2</span>
+                    </div>
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">نتيجة تشخيص مستوى الطالب</span>
+                        <h3 id="resultLevelTitle" class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">مستوى متقدم ومتميز</h3>
+                        <p id="resultStudentLabel" class="text-sm font-bold text-slate-600 mt-0.5"></p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="printStudentResult()"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm px-5 py-3 rounded-2xl shadow-lg transition flex items-center gap-2">
+                        <span>🖨️ طباعة التقرير والشهادة</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Score Breakdown Cards (Total + 3 Sections) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-indigo-950 text-white rounded-2xl p-4 text-center shadow">
+                    <div class="text-xs font-extrabold text-amber-300">الدرجة النهائية الكلية</div>
+                    <div id="scoreTotalDisplay" class="en-font text-3xl font-black my-1">0 / 36</div>
+                    <div id="scorePercentDisplay" class="text-xs font-black bg-white/15 inline-block px-3 py-0.5 rounded-full">0%</div>
+                </div>
+                <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 text-center">
+                    <div class="text-xs font-extrabold text-emerald-900">السؤال 1: ضع علامة صح (✓)</div>
+                    <div id="scoreSec1Display" class="en-font text-2xl font-black text-emerald-950 my-1">0 / 12</div>
+                    <div class="text-[11px] font-bold text-emerald-700 en-font">1) Choose the Correct Word</div>
+                </div>
+                <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 text-center">
+                    <div class="text-xs font-extrabold text-amber-900">السؤال 2: الحرف الناقص</div>
+                    <div id="scoreSec2Display" class="en-font text-2xl font-black text-amber-950 my-1">0 / 12</div>
+                    <div class="text-[11px] font-bold text-amber-800 en-font">2) Choose the missing letter</div>
+                </div>
+                <div class="bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 text-center">
+                    <div class="text-xs font-extrabold text-sky-900">السؤال 3: ضع دائرة حول الإجابة</div>
+                    <div id="scoreSec3Display" class="en-font text-2xl font-black text-sky-950 my-1">0 / 12</div>
+                    <div class="text-[11px] font-bold text-sky-700 en-font">3) Choose the correct answer</div>
+                </div>
+            </div>
+
+            <div id="resultRecommendationBox" class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-4 text-sm font-extrabold text-slate-800 leading-relaxed"></div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start no-print">
+
+            <!-- MAIN QUESTIONS COLUMN (8 cols on lg, 9 on xl) -->
+            <main class="lg:col-span-8 xl:col-span-9 space-y-8">
+
+                <!-- Section Filter Tabs -->
+                <div class="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center gap-2">
+                    <button onclick="filterTestSection('all')" id="tabBtn-all"
+                        class="section-tab flex-1 min-w-[130px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-indigo-600 text-white shadow">
+                        📋 كل الأسئلة (1 – 36)
+                    </button>
+                    <button onclick="filterTestSection('sec1')" id="tabBtn-sec1"
+                        class="section-tab flex-1 min-w-[150px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                        ✅ س1: ضع علامة صح (1 – 12)
+                    </button>
+                    <button onclick="filterTestSection('sec2')" id="tabBtn-sec2"
+                        class="section-tab flex-1 min-w-[150px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                        🔤 س2: الحرف الناقص (13 – 24)
+                    </button>
+                    <button onclick="filterTestSection('sec3')" id="tabBtn-sec3"
+                        class="section-tab flex-1 min-w-[150px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                        ⭕ س3: ضع دائرة (25 – 36)
+                    </button>
+                </div>
+
+                <!-- ===============================================================
+                     SECTION 1 (Questions 1-12): 1) Choose the Correct Word (ضع علامة صح)
+                     =============================================================== -->
+                <section id="section-sec1" class="space-y-4">
+                    <div class="bg-gradient-to-r from-emerald-800 via-green-700 to-teal-700 text-white rounded-3xl p-5 shadow-md flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-white/20 px-3 py-0.5 rounded-full text-xs font-extrabold">السؤال الأول • 12 سؤالاً</span>
+                                <span class="en-font text-xs font-extrabold text-amber-200">1) Choose the Correct Word (Questions 1 – 12)</span>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-black mt-1">
+                                1) انظر إلى كل صورة وضع علامة صح (✓) أمام الكلمة الصحيحة — Look at each picture and check the correct word:
+                            </h3>
+                            <p class="text-xs text-emerald-100 font-bold mt-0.5">
+                                اضغط على المربع بجانب الكلمة الصحيحة لوضع علامة صح (✓) وسماع نطق الكلمة باللغة الإنجليزية
+                            </p>
+                        </div>
+                        <div class="en-font font-black text-sm bg-white/15 backdrop-blur px-4 py-2 rounded-2xl border border-white/25">
+                            12 Marks
+                        </div>
+                    </div>
+
+                    <div id="sec1GridContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4" dir="ltr"></div>
+                </section>
+
+                <!-- ===============================================================
+                     SECTION 2 (Questions 13-24): 2) Choose the missing letter (أوجد الحرف الناقص)
+                     =============================================================== -->
+                <section id="section-sec2" class="space-y-4">
+                    <div class="bg-gradient-to-r from-amber-700 via-orange-600 to-indigo-800 text-white rounded-3xl p-5 shadow-md flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="bg-white/20 px-3 py-0.5 rounded-full text-xs font-extrabold">السؤال الثاني • 12 سؤالاً</span>
+                                <span class="en-font text-xs font-extrabold text-amber-200">2) Choose the missing letter (Questions 13 – 24)</span>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-black mt-1">
+                                2) أوجد الحرف الناقص في كل كلمة — Look at each picture and choose the missing letter:
+                            </h3>
+                            <p class="text-xs text-amber-100 font-bold mt-0.5">
+                                انقر على الحرف الصحيح من الخانتين أسفل كل صورة لإكمال الكلمة وسماع نطقها الصحيح
+                            </p>
+                        </div>
+                        <div class="en-font font-black text-sm bg-white/15 backdrop-blur px-4 py-2 rounded-2xl border border-white/25">
+                            12 Marks
+                        </div>
+                    </div>
+
+                    <div id="sec2GridContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" dir="ltr"></div>
+                </section>
+
+                <!-- ===============================================================
+                     SECTION 3 (Questions 25-36): 3) Choose the correct answer (ضع دائرة)
+                     =============================================================== -->
+                <section id="section-sec3" class="space-y-4">
+                    <div class="bg-gradient-to-r from-sky-800 via-indigo-800 to-purple-900 text-white rounded-3xl p-5 shadow-md flex flex-wrap items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-white/20 px-3 py-0.5 rounded-full text-xs font-extrabold">السؤال الثالث • 12 سؤالاً</span>
+                                <span class="en-font text-xs font-extrabold text-amber-200">3) Choose the correct answer (Questions 25 – 36)</span>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-black">
+                                3) ضع دائرة حول الإجابة الصحيحة — Choose the correct answer:
+                            </h3>
+                            <p class="text-xs text-sky-100 font-bold">
+                                انقر على الإجابة الصحيحة (`a` أو `b` أو `c`) ليتم رسم دائرة حولها وتعبئتها في الجملة تلقائياً
+                            </p>
+                        </div>
+
+                        <!-- Helper Vocabulary Speech Bubble from Worksheet -->
+                        <div class="bg-white text-slate-900 rounded-2xl px-4 py-2.5 border-2 border-amber-300 shadow-md text-xs font-extrabold">
+                            <div class="text-indigo-800 font-black mb-1 flex items-center gap-1">
+                                <span>💬</span>
+                                <span>معاني كلمات مساعدة (Vocabulary Help):</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[11px]">
+                                <div><span class="en-font font-black text-emerald-700">A lot of weight:</span> الكثير من الوزن</div>
+                                <div><span class="en-font font-black text-emerald-700">hard shell:</span> صدفة صلبة</div>
+                                <div><span class="en-font font-black text-emerald-700">Soft:</span> ناعم</div>
+                                <div><span class="en-font font-black text-emerald-700">nature:</span> الطبيعة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sec3ListContainer" class="space-y-3.5"></div>
+                </section>
+
+                <!-- Bottom Submit & Print Bar -->
+                <div class="bg-white rounded-3xl p-5 border-2 border-indigo-100 shadow-lg flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <h4 class="font-black text-base sm:text-lg text-slate-900">هل انتهيت من حل جميع الأسئلة (36 سؤالاً)؟</h4>
+                        <p class="text-xs font-bold text-slate-500">اضغط على زر الاعتماد لإظهار نتيجتك التفصيلية ومستواك مع الشرح الكامل لكل إجابة.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="gradePlacementTest()"
+                            class="bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white font-black text-sm px-6 py-3 rounded-2xl shadow-lg transition">
+                            ✅ اعتماد الإجابات وإظهار النتيجة
+                        </button>
+                        <button onclick="printStudentResult()"
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm px-5 py-3 rounded-2xl shadow-lg transition">
+                            🖨️ طباعة النتيجة
+                        </button>
+                    </div>
+                </div>
+
+            </main>
+
+            <aside class="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-20 space-y-4">
+                <div class="bg-white rounded-3xl border-2 border-slate-200 shadow-xl p-4 sm:p-5">
+                    <!-- Board Header -->
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black">🧭</span>
+                            <div>
+                                <h3 class="font-black text-sm sm:text-base text-slate-900">لوحة الأسئلة التفاعلية</h3>
+                                <p class="text-[11px] font-bold text-slate-500">انقر على رقم السؤال للانتقال إليه</p>
+                            </div>
+                        </div>
+                        <span id="boardAnsweredBadge" class="bg-indigo-50 text-indigo-700 font-black text-xs px-2.5 py-1 rounded-xl border border-indigo-200 en-font">
+                            0 / 36
+                        </span>
+                    </div>
+
+                    <!-- Status Legend -->
+                    <div class="grid grid-cols-2 gap-1.5 text-[11px] font-extrabold text-slate-600 mb-4 bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3.5 h-3.5 rounded bg-white border-2 border-slate-300 inline-block"></span>
+                            <span>لم يُجب (<span id="legendUnanswered">36</span>)</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3.5 h-3.5 rounded bg-indigo-600 inline-block"></span>
+                            <span>تمت الإجابة (<span id="legendAnswered">0</span>)</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3.5 h-3.5 rounded bg-emerald-500 inline-block"></span>
+                            <span>صحيحة (<span id="legendCorrect">-</span>)</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3.5 h-3.5 rounded bg-rose-500 inline-block"></span>
+                            <span>خاطئة (<span id="legendWrong">-</span>)</span>
+                        </div>
+                    </div>
+
+                    <!-- Section 1: Check the Correct Word (1-12) -->
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between text-[11px] font-black text-emerald-800 mb-1.5">
+                            <span>س1: ضع علامة صح (✓) للكلمة</span>
+                            <span class="en-font">1 – 12</span>
+                        </div>
+                        <div id="navGridSec1" class="grid grid-cols-6 gap-1.5" dir="ltr"></div>
+                    </div>
+
+                    <!-- Section 2: Missing Letter (13-24) -->
+                    <div class="mb-3 pt-2.5 border-t border-slate-100">
+                        <div class="flex items-center justify-between text-[11px] font-black text-amber-800 mb-1.5">
+                            <span>س2: أوجد الحرف الناقص</span>
+                            <span class="en-font">13 – 24</span>
+                        </div>
+                        <div id="navGridSec2" class="grid grid-cols-6 gap-1.5" dir="ltr"></div>
+                    </div>
+
+                    <!-- Section 3: Circle the Correct Answer (25-36) -->
+                    <div class="pt-2.5 border-t border-slate-100">
+                        <div class="flex items-center justify-between text-[11px] font-black text-sky-800 mb-1.5">
+                            <span>س3: ضع دائرة حول الإجابة</span>
+                            <span class="en-font">25 – 36</span>
+                        </div>
+                        <div id="navGridSec3" class="grid grid-cols-6 gap-1.5" dir="ltr"></div>
+                    </div>
+
+                    <!-- Teacher Signature Card inside Sidebar -->
+                    <div class="mt-4 pt-3 border-t border-slate-200">
+                        <div class="bg-gradient-to-r from-indigo-950 to-purple-950 text-white rounded-2xl p-3 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="text-amber-400 text-lg">✒️</span>
+                                <div>
+                                    <div class="text-[10px] text-indigo-200 font-bold">إعداد وإشراف</div>
+                                    <div class="text-xs sm:text-sm font-black">الأستاذ: ماجد السويهري</div>
+                                </div>
+                            </div>
+                            <span class="en-font text-[10px] font-black text-orange-300 border border-orange-400/40 px-2 py-0.5 rounded-lg">LANGUA LEARN</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <section id="printableReportArea" class="hidden print-only bg-white p-6 rounded-3xl border-4 border-slate-800">
+            <!-- Print Header -->
+            <div class="flex items-center justify-between border-b-4 border-indigo-900 pb-4 mb-5">
+                <div class="flex items-center gap-3" dir="ltr">
+                    <svg class="w-14 h-14 shrink-0" viewBox="0 0 100 100" fill="none">
+                        <path d="M12 10 H42 L32 25 H26 V75 H42 L32 90 H12 V10 Z" fill="#e88d67"/>
+                        <path d="M46 10 H85 V88 H70 V25 H42 L46 10 Z" fill="#e88d67" opacity="0.9"/>
+                        <polygon points="15,47 50,33 85,47 50,61" fill="#3b0764"/>
+                        <path d="M32 55 V70 C32 76 68 76 68 70 V55 L50 63 L32 55 Z" fill="#4c1d95"/>
+                        <path d="M76 50 V68" stroke="#3b0764" stroke-width="3.5" stroke-linecap="round"/>
+                        <circle cx="76" cy="70" r="3.5" fill="#e88d67" stroke="#3b0764" stroke-width="2"/>
+                    </svg>
+                    <div class="leading-none text-left">
+                        <div class="en-font font-black text-xl tracking-wider text-[#e88d67]">LANGUA</div>
+                        <div class="en-font font-black text-xl tracking-wider text-[#3b0764]">LEARN</div>
+                        <div class="en-font text-[9px] font-bold text-[#e88d67]">Learn, Grow, Succeed</div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <h1 class="text-2xl font-black text-slate-900">تقرير وشهادة اختبار تحديد المستوى الشامل</h1>
+                    <p class="text-xs font-extrabold text-indigo-900 mt-0.5">Choose the Correct Word (12) • Missing Letter (12) • Multiple Choice (12)</p>
+                    <p class="text-xs font-black text-purple-900 mt-1">إعداد الأستاذ: ماجد السويهري</p>
+                </div>
+
+                <div class="text-left text-xs font-extrabold text-slate-600 space-y-1">
+                    <div id="printDateDisplay">التاريخ: —</div>
+                    <div>الدرجة الكلية: 36 درجة</div>
+                </div>
+            </div>
+
+            <!-- Print Student Summary Grid -->
+            <div class="grid grid-cols-4 gap-3 mb-5 text-center">
+                <div class="border-2 border-slate-300 rounded-2xl p-2.5">
+                    <div class="text-xs font-bold text-slate-500">اسم الطالب / الطالبة</div>
+                    <div id="printStudentName" class="text-sm font-black text-slate-900 mt-1">غير محدد</div>
+                </div>
+                <div class="border-2 border-slate-300 rounded-2xl p-2.5">
+                    <div class="text-xs font-bold text-slate-500">الصف / الفصل</div>
+                    <div id="printStudentClass" class="text-sm font-black text-slate-900 mt-1">غير محدد</div>
+                </div>
+                <div class="border-2 border-indigo-400 bg-indigo-50 rounded-2xl p-2.5">
+                    <div class="text-xs font-bold text-indigo-800">الدرجة النهائية والنسبة</div>
+                    <div id="printTotalScore" class="en-font text-base font-black text-indigo-950 mt-1">0 / 36 (0%)</div>
+                </div>
+                <div class="border-2 border-purple-400 bg-purple-50 rounded-2xl p-2.5">
+                    <div class="text-xs font-bold text-purple-800">المستوى التشخيصي</div>
+                    <div id="printLevelResult" class="text-sm font-black text-purple-950 mt-1">—</div>
+                </div>
+            </div>
+
+            <!-- Print Detailed Table of Answers -->
+            <div class="mb-4">
+                <h3 class="font-black text-xs text-slate-900 mb-2">تفصيل إجابات الطالب في الأقسام الثلاثة (36 سؤالاً):</h3>
+                <div id="printAnswersTableContainer" class="text-[10.5px]"></div>
+            </div>
+
+            <!-- Print Footer Signature -->
+            <div class="mt-4 pt-3 border-t-2 border-slate-300 flex items-center justify-between text-xs font-black text-slate-800">
+                <div>إعداد وإشراف الأستاذ: ماجد السويهري ✒️</div>
+                <div class="en-font">Langua Learn Academy • Learn, Grow, Succeed</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toastMessage" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-slate-900 text-white font-extrabold text-xs sm:text-sm px-5 py-3 rounded-2xl shadow-2xl border border-white/15 no-print"></div>
+
+    <script>
+        // =========================================================================
+        // 1. COMPLETE DATA FOR ALL 3 SECTIONS (36 QUESTIONS TOTAL: 12 + 12 + 12)
+        // =========================================================================
+
+        // --- SECTION 1: 1) Choose the Correct Word (Questions 1 - 12) ---
+        const sec1CheckWordQuestions = [
+            {
+                id: 1,
+                localNum: 1,
+                svgType: 'beetleBlack',
+                titleAr: 'خنفساء',
+                options: ['Beetle', 'Wing', 'Heavy'],
+                correctIndex: 0,
+                ruleAr: 'الصورة توضح حشرة الخنفساء ذات الأجنحة الصلبة: Beetle.'
+            },
+            {
+                id: 2,
+                localNum: 2,
+                svgType: 'dinosaurCute',
+                titleAr: 'ديناصور',
+                options: ['Butterfly', 'insects', 'Dinosaur'],
+                correctIndex: 2,
+                ruleAr: 'الصورة توضح الديناصور الأخضر: Dinosaur.'
+            },
+            {
+                id: 3,
+                localNum: 3,
+                svgType: 'heavyRockMan',
+                titleAr: 'ثقيل الوزن',
+                options: ['Wing', 'Heavy', 'Beetle'],
+                correctIndex: 1,
+                ruleAr: 'الصورة توضح رجلاً يحمل صخرة ثقيلة جداً: Heavy.'
+            },
+            {
+                id: 4,
+                localNum: 4,
+                svgType: 'insectsGroup',
+                titleAr: 'حشرات متنوعة',
+                options: ['Heavy', 'Quiet', 'insects'],
+                correctIndex: 2,
+                ruleAr: 'الصورة تضم مجموعة من الحشرات (نملة، نحلة، يرقة، فراشة): insects.'
+            },
+            {
+                id: 5,
+                localNum: 5,
+                svgType: 'furryCat',
+                titleAr: 'قطة كثيفة الفراء',
+                options: ['Furry', 'Dinosaur', 'insects'],
+                correctIndex: 0,
+                ruleAr: 'الصورة توضح قطة ذات فراء كثيف وناعم: Furry.'
+            },
+            {
+                id: 6,
+                localNum: 6,
+                svgType: 'quietGirlBunny',
+                titleAr: 'هادئ',
+                options: ['wing', 'Furry', 'Quiet'],
+                correctIndex: 2,
+                ruleAr: 'الفتاة تشير بعلامة الهدوء (Quiet) بجانب الأرنب.'
+            },
+            {
+                id: 7,
+                localNum: 7,
+                svgType: 'tortoiseBrown',
+                titleAr: 'سلحفاة برية',
+                options: ['Tortoise', 'Dinosaur', 'Beetle'],
+                correctIndex: 0,
+                ruleAr: 'الصورة توضح السلحفاة البرية ذات الصدفة الصلبة: Tortoise.'
+            },
+            {
+                id: 8,
+                localNum: 8,
+                svgType: 'butterflyPurple',
+                titleAr: 'فراشة ملونة',
+                options: ['Beetle', 'Dinosaur', 'Butterfly'],
+                correctIndex: 2,
+                ruleAr: 'الصورة توضح الفراشة البنفسجية الجميلة: Butterfly.'
+            },
+            {
+                id: 9,
+                localNum: 9,
+                svgType: 'wingBlue',
+                titleAr: 'جناح',
+                options: ['Heavy', 'Quiet', 'wing'],
+                correctIndex: 2,
+                ruleAr: 'الصورة توضح جناح الفراشة الأزرق: wing.'
+            },
+            {
+                id: 10,
+                localNum: 10,
+                svgType: 'dontTouchSign',
+                titleAr: 'لا تلمس',
+                options: ["Don't touch", 'Furry', 'Beetle'],
+                correctIndex: 0,
+                ruleAr: 'علامة المنع مع الكف تعني: لا تلمس (Don’t touch).'
+            },
+            {
+                id: 11,
+                localNum: 11,
+                svgType: 'extinctDino',
+                titleAr: 'منقرض',
+                options: ['Furry', 'Extinct', 'insects'],
+                correctIndex: 1,
+                ruleAr: 'الديناصورات حيوانات منقرضة لم تعد تعيش اليوم: Extinct.'
+            },
+            {
+                id: 12,
+                localNum: 12,
+                svgType: 'lookLikeDinos',
+                titleAr: 'يشبه',
+                options: ['Quiet', 'Wing', 'Look like'],
+                correctIndex: 2,
+                ruleAr: 'الديناصوران المتقابلان متشابهان في الشكل: Look like (يشبه).'
+            }
+        ];
+
+        // --- SECTION 2: 2) Choose the missing letter (Questions 13 - 24) ---
+        const sec2MissingLetterQuestions = [
+            {
+                id: 13,
+                localNum: 1,
+                svgType: 'quietChild',
+                prefix: 'Qu',
+                suffix: 'et',
+                fullWord: 'Quiet',
+                meaningAr: 'هادئ',
+                options: ['a', 'i'],
+                correctLetter: 'i',
+                ruleAr: 'الحرف الناقص في كلمة (Quiet - هادئ) هو حرف (i).'
+            },
+            {
+                id: 14,
+                localNum: 2,
+                svgType: 'whiteFurryFox',
+                prefix: 'furr',
+                suffix: '',
+                fullWord: 'furry',
+                meaningAr: 'ذو فراء ناعم',
+                options: ['y', 'e'],
+                correctLetter: 'y',
+                ruleAr: 'الحرف الناقص في نهاية كلمة (furry - ذو فراء) هو حرف (y).'
+            },
+            {
+                id: 15,
+                localNum: 3,
+                svgType: 'yellowDinosaur',
+                prefix: 'Dino',
+                suffix: 'aur',
+                fullWord: 'Dinosaur',
+                meaningAr: 'ديناصور',
+                options: ['c', 's'],
+                correctLetter: 's',
+                ruleAr: 'الحرف الناقص في كلمة (Dinosaur - ديناصور) هو حرف (s).'
+            },
+            {
+                id: 16,
+                localNum: 4,
+                svgType: 'tortoiseBrown',
+                prefix: 'Tort',
+                suffix: 'ise',
+                fullWord: 'Tortoise',
+                meaningAr: 'سلحفاة برية',
+                options: ['o', 'u'],
+                correctLetter: 'o',
+                ruleAr: 'الحرف الناقص في كلمة (Tortoise - سلحفاة) هو حرف (o).'
+            },
+            {
+                id: 17,
+                localNum: 5,
+                svgType: 'butterflyOpen',
+                prefix: 'b',
+                suffix: 'tterfly',
+                fullWord: 'butterfly',
+                meaningAr: 'فراشة',
+                options: ['u', 'a'],
+                correctLetter: 'u',
+                ruleAr: 'الحرف الناقص في كلمة (butterfly - فراشة) هو حرف (u).'
+            },
+            {
+                id: 18,
+                localNum: 6,
+                svgType: 'heavySuitcase',
+                prefix: 'Hea',
+                suffix: 'y',
+                fullWord: 'Heavy',
+                meaningAr: 'ثقيل',
+                options: ['f', 'v'],
+                correctLetter: 'v',
+                ruleAr: 'الحرف الناقص في كلمة (Heavy - ثقيل) هو حرف (v).'
+            },
+            {
+                id: 19,
+                localNum: 7,
+                svgType: 'wingPastel',
+                prefix: 'W',
+                suffix: 'ng',
+                fullWord: 'Wing',
+                meaningAr: 'جناح',
+                options: ['u', 'i'],
+                correctLetter: 'i',
+                ruleAr: 'الحرف الناقص في كلمة (Wing - جناح) هو حرف (i).'
+            },
+            {
+                id: 20,
+                localNum: 8,
+                svgType: 'beetleBlue',
+                prefix: 'Bee',
+                suffix: 'le',
+                fullWord: 'Beetle',
+                meaningAr: 'خنفساء',
+                options: ['t', 'd'],
+                correctLetter: 't',
+                ruleAr: 'الحرف الناقص في كلمة (Beetle - خنفساء) هو حرف (t).'
+            },
+            {
+                id: 21,
+                localNum: 9,
+                svgType: 'insectsLadybug',
+                prefix: 'inse',
+                suffix: 'ts',
+                fullWord: 'insects',
+                meaningAr: 'حشرات',
+                options: ['k', 'c'],
+                correctLetter: 'c',
+                ruleAr: 'الحرف الناقص في كلمة (insects - حشرات) هو حرف (c).'
+            },
+            {
+                id: 22,
+                localNum: 10,
+                svgType: 'touchDog',
+                prefix: 'Tou',
+                suffix: 'h',
+                fullWord: 'Touch',
+                meaningAr: 'يلمس',
+                options: ['c', 's'],
+                correctLetter: 'c',
+                ruleAr: 'الحرف الناقص في كلمة (Touch - يلمس) هو حرف (c).'
+            },
+            {
+                id: 23,
+                localNum: 11,
+                svgType: 'mammothExtinct',
+                prefix: 'Exti',
+                suffix: 'ct',
+                fullWord: 'Extinct',
+                meaningAr: 'منقرض',
+                options: ['m', 'n'],
+                correctLetter: 'n',
+                ruleAr: 'الحرف الناقص في كلمة (Extinct - منقرض) هو حرف (n).'
+            },
+            {
+                id: 24,
+                localNum: 12,
+                svgType: 'seaCreatures',
+                prefix: 'Creat',
+                suffix: 're',
+                fullWord: 'Creature',
+                meaningAr: 'مخلوق / كائن حي',
+                options: ['a', 'u'],
+                correctLetter: 'u',
+                ruleAr: 'الحرف الناقص في كلمة (Creature - مخلوق) هو حرف (u).'
+            }
+        ];
+
+        // --- SECTION 3: 3) Choose the correct answer (Questions 25 - 36) ---
+        const sec3CircleMcqQuestions = [
+            {
+                id: 25,
+                localNum: 1,
+                before: 'Most animals with',
+                after: 'can fly.',
+                options: ['legs', 'wings', 'tails'],
+                correctIndex: 1,
+                ruleAr: 'معظم الحيوانات التي تمتلك أجنحة (wings) تستطيع الطيران (can fly).'
+            },
+            {
+                id: 26,
+                localNum: 2,
+                before: 'A',
+                after: 'is a heavy insect with hard wings.',
+                options: ['tiger', 'beetle', 'dinosaur'],
+                correctIndex: 1,
+                ruleAr: 'الحشرة الثقيلة ذات الأجنحة الصلبة (hard wings) هي الخنفساء: beetle.'
+            },
+            {
+                id: 27,
+                localNum: 3,
+                before: 'Something that has a lot of weight is',
+                after: '.',
+                options: ['colorful', 'furry', 'heavy'],
+                correctIndex: 2,
+                ruleAr: 'الشيء الذي له وزن كبير (a lot of weight) نسميه ثقيلاً: heavy.'
+            },
+            {
+                id: 28,
+                localNum: 4,
+                before: 'Dinosaurs are',
+                after: ". They don't live today.",
+                options: ['wild', 'extinct', 'tiny'],
+                correctIndex: 1,
+                ruleAr: 'الديناصورات لم تعد تعيش اليوم (don’t live today)، لذا فهي منقرضة: extinct.'
+            },
+            {
+                id: 29,
+                localNum: 5,
+                before: 'A',
+                after: 'is a reptile that can hide its head and legs in its shell.',
+                options: ['tortoise', 'beetle', 'butterfly'],
+                correctIndex: 0,
+                ruleAr: 'الحيوان الزاحف الذي يخفي رأسه وأرجله داخل صدفته (shell) هو السلحفاة: tortoise.'
+            },
+            {
+                id: 30,
+                localNum: 6,
+                before: '',
+                after: 'animals live outside and find their own food and shelter.',
+                options: ['tiny', 'wild', 'extinct'],
+                correctIndex: 1,
+                ruleAr: 'الحيوانات التي تعيش في الطبيعة وتبحث عن غذائها ومأواها بنفسها هي الحيوانات البرية: wild.'
+            },
+            {
+                id: 31,
+                localNum: 7,
+                before: 'A fox can be',
+                after: 'and soft.',
+                options: ['heavy', 'quiet', 'furry'],
+                correctIndex: 2,
+                ruleAr: 'الثعلب يتميز بفرائه الكثيف والناعم (furry and soft).'
+            },
+            {
+                id: 32,
+                localNum: 8,
+                before: 'An ant is a very',
+                after: 'insect.',
+                options: ['heavy', 'tiny', 'wild'],
+                correctIndex: 1,
+                ruleAr: 'النملة حشرة صغيرة جداً في الحجم: tiny.'
+            },
+            {
+                id: 33,
+                localNum: 9,
+                before: 'We should be',
+                after: 'in nature.',
+                options: ['heavy', 'quiet', 'colorful'],
+                correctIndex: 1,
+                ruleAr: 'ينبغي أن نكون هادئين (quiet) في الطبيعة حتى لا نزعج الكائنات الحية.'
+            },
+            {
+                id: 34,
+                localNum: 10,
+                before: 'Insects, animals, birds, and fish are all different kinds of',
+                after: '.',
+                options: ['creatures', 'wing', 'quiet'],
+                correctIndex: 0,
+                ruleAr: 'الحشرات والحيوانات والطيور والأسماك كلها أنواع مختلفة من المخلوقات الحية: creatures.'
+            },
+            {
+                id: 35,
+                localNum: 11,
+                before: 'This animal',
+                after: 'a dinosaur.',
+                options: ['looks like', 'heavy', 'extinct'],
+                correctIndex: 0,
+                ruleAr: 'نحتاج إلى فعل بمعنى "يشبه" (looks like): هذا الحيوان يشبه الديناصور.'
+            },
+            {
+                id: 36,
+                localNum: 12,
+                before: '',
+                after: 'are extinct.',
+                options: ['Butterflies', 'Beetles', 'Dinosaurs'],
+                correctIndex: 2,
+                ruleAr: 'الحيوانات المنقرضة من بين الخيارات هي الديناصورات: Dinosaurs.'
+            }
+        ];
+
+        // =========================================================================
+        // 2. APPLICATION STATE & WEB AUDIO SYNTHESIS
+        // =========================================================================
+        const state = {
+            // Section 1 (1..12): selected option index (0, 1, or 2)
+            sec1Answers: {},
+            // Section 2 (13..24): selected letter string
+            sec2Answers: {},
+            // Section 3 (25..36): selected option index (0, 1, or 2)
+            sec3Answers: {},
+
+            isGraded: false,
+            soundEnabled: true
+        };
+
+        let audioCtx = null;
+
+        function playTone(type) {
+            if (!state.soundEnabled) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'tick') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(580, now);
+                    osc.frequency.exponentialRampToValueAtTime(920, now + 0.09);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                } else if (type === 'pop') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(460, now);
+                    osc.frequency.exponentialRampToValueAtTime(720, now + 0.09);
+                    gain.gain.setValueAtTime(0.13, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                } else if (type === 'fanfare') {
+                    const notes = [523.25, 659.25, 783.99, 1046.5];
+                    notes.forEach((freq, idx) => {
+                        const o = audioCtx.createOscillator();
+                        const g = audioCtx.createGain();
+                        o.type = 'triangle';
+                        o.connect(g);
+                        g.connect(audioCtx.destination);
+                        o.frequency.setValueAtTime(freq, now + idx * 0.09);
+                        g.gain.setValueAtTime(0.14, now + idx * 0.09);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.09 + 0.25);
+                        o.start(now + idx * 0.09);
+                        o.stop(now + idx * 0.09 + 0.26);
+                    });
+                }
+            } catch (e) {
+                // Ignore audio context blocks
+            }
+        }
+
+        function toggleSoundEffects() {
+            state.soundEnabled = !state.soundEnabled;
+            document.getElementById('soundToggleIcon').textContent = state.soundEnabled ? '🔊' : '🔇';
+            showToast(state.soundEnabled ? '🔊 تم تفعيل المؤثرات الصوتية' : '🔇 تم كتم المؤثرات الصوتية');
+        }
+
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const clean = text.replace(/\.{2,}|_+/g, ' blank ');
+            const utter = new SpeechSynthesisUtterance(clean);
+            utter.lang = 'en-US';
+            utter.rate = 0.90;
+            window.speechSynthesis.speak(utter);
+        }
+
+        function getCreatureIllustrationSvg(type) {
+            switch (type) {
+                case 'beetleBlack':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <g stroke="#1e293b" stroke-width="3.5" stroke-linecap="round">
+                                <path d="M45 45 L22 30 M42 62 L18 62 M45 80 L22 96" fill="none"/>
+                                <path d="M95 45 L118 30 M98 62 L122 62 M95 80 L118 96" fill="none"/>
+                                <path d="M62 25 Q50 10 40 14 M78 25 Q90 10 100 14" fill="none"/>
+                            </g>
+                            <ellipse cx="70" cy="32" rx="16" ry="11" fill="#334155" stroke="#0f172a" stroke-width="2.5"/>
+                            <ellipse cx="70" cy="68" rx="28" ry="34" fill="#1e293b" stroke="#0f172a" stroke-width="3"/>
+                            <line x1="70" y1="36" x2="70" y2="102" stroke="#475569" stroke-width="2.5"/>
+                            <path d="M52 52 Q60 45 66 52" stroke="#64748b" stroke-width="2" fill="none"/>
+                        </svg>
+                    `;
+                case 'dinosaurCute':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Spikes -->
+                            <polygon points="62,20 70,12 72,24" fill="#9333ea"/>
+                            <polygon points="50,32 56,22 60,35" fill="#9333ea"/>
+                            <polygon points="42,48 45,38 52,50" fill="#9333ea"/>
+                            <!-- Tail & Body -->
+                            <path d="M22 76 Q38 82 46 66 C48 42 78 38 88 58 C95 76 88 96 64 96 C44 96 30 90 22 76 Z" fill="#10b981" stroke="#047857" stroke-width="2.5"/>
+                            <!-- Head -->
+                            <ellipse cx="86" cy="36" rx="22" ry="17" fill="#10b981" stroke="#047857" stroke-width="2.5"/>
+                            <circle cx="92" cy="32" r="4.5" fill="#ffffff"/>
+                            <circle cx="93" cy="32" r="2.5" fill="#0f172a"/>
+                            <path d="M84 43 Q94 48 102 42" stroke="#065f46" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <!-- Spots -->
+                            <circle cx="62" cy="68" r="5" fill="#fb923c"/>
+                            <circle cx="75" cy="76" r="4" fill="#fb923c"/>
+                            <circle cx="52" cy="78" r="3.5" fill="#fb923c"/>
+                            <!-- Legs -->
+                            <rect x="52" y="90" width="11" height="15" rx="4" fill="#059669"/>
+                            <rect x="72" y="90" width="11" height="15" rx="4" fill="#059669"/>
+                        </svg>
+                    `;
+                case 'heavyRockMan':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Huge Heavy Boulder -->
+                            <path d="M26 48 C22 22 50 10 74 12 C102 12 118 26 112 50 C108 66 32 66 26 48 Z" fill="#a8a29e" stroke="#57534e" stroke-width="3"/>
+                            <path d="M44 28 L54 34 M85 25 L76 33" stroke="#78716c" stroke-width="2"/>
+                            <!-- Sweat drops -->
+                            <circle cx="36" cy="68" r="2.5" fill="#38bdf8"/>
+                            <circle cx="104" cy="68" r="2.5" fill="#38bdf8"/>
+                            <!-- Struggling Man -->
+                            <circle cx="70" cy="72" r="13" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+                            <rect x="63" y="76" width="14" height="5" rx="2" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+                            <path d="M40 54 L54 82 L86 82 L100 54" stroke="#fed7aa" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="56" y="84" width="28" height="16" rx="4" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+                            <polygon points="70,85 67,98 73,98" fill="#2563eb"/>
+                            <path d="M54 108 L62 98 H78 L86 108" stroke="#1e3a8a" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    `;
+                case 'insectsGroup':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Ant (top left) -->
+                            <circle cx="32" cy="34" r="6" fill="#6b21a8"/>
+                            <circle cx="44" cy="36" r="5" fill="#6b21a8"/>
+                            <circle cx="55" cy="38" r="7" fill="#6b21a8"/>
+                            <path d="M38 40 L34 48 M44 41 L44 49 M50 41 L54 48" stroke="#4c1d95" stroke-width="2"/>
+                            <!-- Bee (top right) -->
+                            <ellipse cx="98" cy="34" rx="13" ry="9" fill="#facc15" stroke="#0f172a" stroke-width="2"/>
+                            <line x1="94" y1="26" x2="94" y2="42" stroke="#0f172a" stroke-width="3"/>
+                            <line x1="102" y1="26" x2="102" y2="42" stroke="#0f172a" stroke-width="3"/>
+                            <ellipse cx="98" cy="22" rx="7" ry="5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.5"/>
+                            <!-- Caterpillar (bottom left) -->
+                            <circle cx="28" cy="84" r="6" fill="#84cc16"/>
+                            <circle cx="38" cy="86" r="6" fill="#65a30d"/>
+                            <circle cx="48" cy="85" r="6" fill="#84cc16"/>
+                            <circle cx="58" cy="82" r="7" fill="#a3e635"/>
+                            <!-- Orange Butterfly (bottom right) -->
+                            <ellipse cx="88" cy="78" rx="11" ry="14" fill="#f97316"/>
+                            <ellipse cx="108" cy="78" rx="11" ry="14" fill="#f97316"/>
+                            <rect x="96" y="66" width="4" height="24" rx="2" fill="#431407"/>
+                        </svg>
+                    `;
+                case 'furryCat':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Fluffy Tail -->
+                            <path d="M28 84 C12 72 16 48 34 56 C44 60 44 76 34 86 Z" fill="#475569" stroke="#334155" stroke-width="2"/>
+                            <!-- Fluffy Body -->
+                            <ellipse cx="68" cy="78" rx="32" ry="18" fill="#64748b"/>
+                            <ellipse cx="76" cy="82" rx="22" ry="13" fill="#f8fafc"/>
+                            <!-- Cat Head & Ears -->
+                            <polygon points="82,46 86,30 96,42" fill="#475569"/>
+                            <polygon points="104,42 114,30 116,46" fill="#475569"/>
+                            <circle cx="98" cy="54" r="15" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+                            <circle cx="93" cy="52" r="2" fill="#0f172a"/>
+                            <circle cx="104" cy="52" r="2" fill="#0f172a"/>
+                            <polygon points="98,56 95,59 101,59" fill="#fb7185"/>
+                        </svg>
+                    `;
+                case 'quietGirlBunny':
+                case 'quietChild':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Hair -->
+                            <path d="M46 52 C46 20 104 20 104 52 L108 82 H42 Z" fill="#7c2d12"/>
+                            <!-- Face -->
+                            <circle cx="75" cy="54" r="20" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+                            <circle cx="68" cy="50" r="2.2" fill="#0f172a"/>
+                            <circle cx="82" cy="50" r="2.2" fill="#0f172a"/>
+                            <!-- Finger on lips "Shh" -->
+                            <path d="M72 62 Q75 65 78 62" stroke="#9a3412" stroke-width="2" fill="none"/>
+                            <rect x="72" y="57" width="6" height="18" rx="3" fill="#fed7aa" stroke="#9a3412" stroke-width="1.8"/>
+                            <!-- Shirt -->
+                            <path d="M52 104 L58 75 H92 L98 104 Z" fill="#14b8a6" stroke="#0f766e" stroke-width="2"/>
+                            <!-- Cute Bunny on left -->
+                            <ellipse cx="32" cy="92" rx="11" ry="9" fill="#92400e"/>
+                            <circle cx="38" cy="82" r="7" fill="#92400e"/>
+                            <ellipse cx="36" cy="71" rx="2.5" ry="7" fill="#92400e"/>
+                            <ellipse cx="41" cy="71" rx="2.5" ry="7" fill="#92400e"/>
+                        </svg>
+                    `;
+                case 'tortoiseBrown':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Legs & Head -->
+                            <rect x="30" y="76" width="12" height="18" rx="5" fill="#a16207" stroke="#713f12" stroke-width="2"/>
+                            <rect x="78" y="76" width="12" height="18" rx="5" fill="#a16207" stroke="#713f12" stroke-width="2"/>
+                            <ellipse cx="110" cy="66" rx="14" ry="10" fill="#a16207" stroke="#713f12" stroke-width="2"/>
+                            <circle cx="115" cy="63" r="2" fill="#0f172a"/>
+                            <!-- Hard Dome Shell -->
+                            <path d="M22 78 C22 36 96 36 98 78 Z" fill="#ca8a04" stroke="#713f12" stroke-width="3"/>
+                            <path d="M38 56 H80 M48 44 L40 78 M72 44 L80 78" stroke="#713f12" stroke-width="2.5" fill="none"/>
+                        </svg>
+                    `;
+                case 'butterflyPurple':
+                case 'butterflyOpen':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Left Wings -->
+                            <path d="M68 58 C42 20 14 28 20 56 C24 72 48 68 68 64 Z" fill="#7e22ce" stroke="#3b0764" stroke-width="2.5"/>
+                            <path d="M68 64 C44 68 26 86 38 98 C50 108 64 88 68 72 Z" fill="#9333ea" stroke="#3b0764" stroke-width="2.5"/>
+                            <!-- Right Wings -->
+                            <path d="M72 58 C98 20 126 28 120 56 C116 72 92 68 72 64 Z" fill="#7e22ce" stroke="#3b0764" stroke-width="2.5"/>
+                            <path d="M72 64 C96 68 114 86 102 98 C90 108 76 88 72 72 Z" fill="#9333ea" stroke="#3b0764" stroke-width="2.5"/>
+                            <!-- Wing Dots -->
+                            <circle cx="38" cy="48" r="4" fill="#e9d5ff"/>
+                            <circle cx="102" cy="48" r="4" fill="#e9d5ff"/>
+                            <circle cx="46" cy="84" r="3.5" fill="#f0abfc"/>
+                            <circle cx="94" cy="84" r="3.5" fill="#f0abfc"/>
+                            <!-- Body & Antennae -->
+                            <rect x="67" y="42" width="6" height="44" rx="3" fill="#1e1b4b"/>
+                            <path d="M68 42 Q60 28 52 30 M72 42 Q80 28 88 30" stroke="#1e1b4b" stroke-width="2" fill="none"/>
+                        </svg>
+                    `;
+                case 'wingBlue':
+                case 'wingPastel':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <path d="M44 62 C44 22 98 14 104 42 C108 60 84 66 72 66 C88 72 98 94 82 104 C64 112 44 86 44 62 Z"
+                                  fill="#38bdf8" stroke="#1e3a8a" stroke-width="3"/>
+                            <path d="M46 62 L96 42 M46 62 L88 58 M46 62 L80 92" stroke="#0284c7" stroke-width="2"/>
+                            <circle cx="94" cy="36" r="3" fill="#e0f2fe"/>
+                            <circle cx="84" cy="88" r="3" fill="#e0f2fe"/>
+                        </svg>
+                    `;
+                case 'dontTouchSign':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Hand -->
+                            <path d="M52 78 V44 a4 4 0 0 1 8 0 V36 a4 4 0 0 1 8 0 V34 a4 4 0 0 1 8 0 V40 a4 4 0 0 1 8 0 V74 C84 88 52 88 52 78 Z"
+                                  fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+                            <!-- Red Prohibition Circle & Slash -->
+                            <circle cx="70" cy="60" r="42" fill="none" stroke="#ef4444" stroke-width="9"/>
+                            <line x1="40" y1="30" x2="100" y2="90" stroke="#ef4444" stroke-width="9"/>
+                        </svg>
+                    `;
+                case 'extinctDino':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Spiky Frill Triceratops -->
+                            <polygon points="75,28 84,14 88,30 102,20 98,36 114,34 102,48" fill="#eab308" stroke="#854d0e" stroke-width="2"/>
+                            <!-- Body -->
+                            <ellipse cx="62" cy="70" rx="34" ry="22" fill="#65a30d" stroke="#3f6212" stroke-width="2.5"/>
+                            <!-- Head & Horns -->
+                            <circle cx="96" cy="62" r="14" fill="#84cc16" stroke="#3f6212" stroke-width="2.5"/>
+                            <line x1="104" y1="54" x2="122" y2="44" stroke="#fef08a" stroke-width="4" stroke-linecap="round"/>
+                            <rect x="40" y="86" width="10" height="16" rx="3" fill="#4d7c0f"/>
+                            <rect x="70" y="86" width="10" height="16" rx="3" fill="#4d7c0f"/>
+                        </svg>
+                    `;
+                case 'lookLikeDinos':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Left Green Dino -->
+                            <path d="M24 98 C24 72 42 70 46 52 C48 36 58 36 60 44 C60 52 52 54 52 68 C58 76 58 98 52 98 Z"
+                                  fill="#6ee7b7" stroke="#059669" stroke-width="2.5"/>
+                            <circle cx="54" cy="42" r="2" fill="#0f172a"/>
+                            <!-- Right Orange Dino (Mirror) -->
+                            <path d="M116 98 C116 72 98 70 94 52 C92 36 82 36 80 44 C80 52 88 54 88 68 C82 76 82 98 88 98 Z"
+                                  fill="#fdba74" stroke="#d97706" stroke-width="2.5"/>
+                            <circle cx="86" cy="42" r="2" fill="#0f172a"/>
+                        </svg>
+                    `;
+                case 'whiteFurryFox':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Fluffy White Tail & Body -->
+                            <path d="M84 88 C108 86 116 56 96 48 C88 56 92 74 80 80 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+                            <ellipse cx="66" cy="76" rx="22" ry="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                            <polygon points="50,42 54,24 64,38" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                            <polygon points="68,38 78,24 82,42" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="66" cy="48" r="15" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+                            <circle cx="60" cy="46" r="2.2" fill="#0284c7"/>
+                            <circle cx="72" cy="46" r="2.2" fill="#0284c7"/>
+                        </svg>
+                    `;
+                case 'yellowDinosaur':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <path d="M40 84 C40 56 76 54 82 76 C92 80 108 78 114 70 C112 90 92 96 48 96 Z" fill="#facc15" stroke="#ca8a04" stroke-width="2.5"/>
+                            <circle cx="62" cy="44" r="16" fill="#fde047" stroke="#ca8a04" stroke-width="2.5"/>
+                            <circle cx="58" cy="40" r="2.5" fill="#0f172a"/>
+                            <rect x="48" y="88" width="10" height="14" rx="3" fill="#eab308"/>
+                            <rect x="70" y="88" width="10" height="14" rx="3" fill="#eab308"/>
+                        </svg>
+                    `;
+                case 'heavySuitcase':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Person sweating & pulling heavy suitcase -->
+                            <circle cx="70" cy="36" r="14" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+                            <path d="M64 42 Q70 38 76 42" stroke="#dc2626" stroke-width="2" fill="none"/>
+                            <rect x="56" y="50" width="28" height="22" rx="5" fill="#f43f5e"/>
+                            <!-- Big Heavy Brown Suitcase -->
+                            <rect x="46" y="68" width="48" height="36" rx="6" fill="#7f1d1d" stroke="#450a0a" stroke-width="3"/>
+                            <path d="M62 68 V60 H78 V68" stroke="#334155" stroke-width="3" fill="none"/>
+                        </svg>
+                    `;
+                case 'beetleBlue':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <g stroke="#1e3a8a" stroke-width="3" stroke-linecap="round">
+                                <path d="M46 44 L24 32 M44 62 L20 62 M46 80 L24 92"/>
+                                <path d="M94 44 L116 32 M96 62 L120 62 M94 80 L116 92"/>
+                            </g>
+                            <ellipse cx="70" cy="64" rx="26" ry="30" fill="#2563eb" stroke="#1e3a8a" stroke-width="3"/>
+                            <line x1="70" y1="34" x2="70" y2="94" stroke="#93c5fd" stroke-width="2.5"/>
+                        </svg>
+                    `;
+                case 'insectsLadybug':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Dragonfly top -->
+                            <ellipse cx="70" cy="34" rx="18" ry="6" fill="#38bdf8"/>
+                            <rect x="68" y="22" width="4" height="24" rx="2" fill="#f97316"/>
+                            <!-- Two Ladybugs -->
+                            <circle cx="46" cy="78" r="16" fill="#ef4444" stroke="#0f172a" stroke-width="2.5"/>
+                            <circle cx="40" cy="74" r="3" fill="#0f172a"/><circle cx="52" cy="80" r="3" fill="#0f172a"/>
+                            <circle cx="94" cy="78" r="16" fill="#ef4444" stroke="#0f172a" stroke-width="2.5"/>
+                            <circle cx="88" cy="74" r="3" fill="#0f172a"/><circle cx="100" cy="80" r="3" fill="#0f172a"/>
+                        </svg>
+                    `;
+                case 'touchDog':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Cute Dog Head -->
+                            <path d="M52 44 C78 40 104 56 104 76 C104 92 78 96 52 96 Z" fill="#d97706" stroke="#78350f" stroke-width="2.5"/>
+                            <ellipse cx="62" cy="68" rx="8" ry="16" fill="#92400e"/>
+                            <circle cx="82" cy="60" r="3" fill="#0f172a"/>
+                            <circle cx="102" cy="72" r="4" fill="#0f172a"/>
+                            <!-- Hand Petting/Touching Dog -->
+                            <path d="M24 36 C38 30 58 36 58 48 C58 56 40 58 26 54 Z" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+                        </svg>
+                    `;
+                case 'mammothExtinct':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <!-- Woolly Mammoth -->
+                            <ellipse cx="78" cy="64" rx="30" ry="22" fill="#78350f" stroke="#451a03" stroke-width="2.5"/>
+                            <circle cx="50" cy="56" r="16" fill="#78350f" stroke="#451a03" stroke-width="2.5"/>
+                            <path d="M38 62 C32 82 44 92 52 84" stroke="#78350f" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <!-- White Curved Tusks -->
+                            <path d="M42 68 C22 72 18 54 28 48" stroke="#fef3c7" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <rect x="60" y="82" width="10" height="18" rx="3" fill="#451a03"/>
+                            <rect x="88" y="82" width="10" height="18" rx="3" fill="#451a03"/>
+                        </svg>
+                    `;
+                case 'seaCreatures':
+                    return `
+                        <svg viewBox="0 0 140 120" class="w-28 h-24 mx-auto">
+                            <rect x="14" y="20" width="112" height="80" rx="16" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="2"/>
+                            <!-- Whale -->
+                            <path d="M74 56 C74 38 106 38 110 56 C116 56 122 48 122 44 C124 56 116 66 94 66 Z" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                            <!-- Dolphin -->
+                            <path d="M24 54 C32 36 52 38 56 52 C46 50 34 54 24 54 Z" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+                            <!-- Sea Turtle -->
+                            <ellipse cx="56" cy="78" rx="12" ry="8" fill="#16a34a" stroke="#15803d" stroke-width="2"/>
+                            <circle cx="70" cy="76" r="4" fill="#4ade80"/>
+                        </svg>
+                    `;
+                default:
+                    return '';
+            }
+        }
+
+        function renderSection1CheckWord() {
+            const container = document.getElementById('sec1GridContainer');
+            container.innerHTML = '';
+
+            sec1CheckWordQuestions.forEach(q => {
+                const selectedIdx = state.sec1Answers[q.id];
+                const isAnswered = selectedIdx !== undefined;
+
+                let cardBorder = 'border-slate-200 bg-white';
+                if (state.isGraded) {
+                    const isCorrect = selectedIdx === q.correctIndex;
+                    cardBorder = isCorrect ? 'border-emerald-500 bg-emerald-50/30' : 'border-rose-500 bg-rose-50/30';
+                } else if (isAnswered) {
+                    cardBorder = 'border-emerald-500 bg-white shadow-md';
+                }
+
+                const optionsHtml = q.options.map((optText, idx) => {
+                    const isChecked = selectedIdx === idx;
+                    let rowStyle = 'bg-emerald-50/60 hover:bg-emerald-100/70 border-emerald-200 text-slate-900';
+                    let boxStyle = 'bg-white border-emerald-500 text-emerald-700';
+
+                    if (state.isGraded) {
+                        if (idx === q.correctIndex) {
+                            rowStyle = 'bg-emerald-100 border-emerald-500 text-emerald-950';
+                            boxStyle = 'bg-emerald-600 border-emerald-700 text-white';
+                        } else if (isChecked && idx !== q.correctIndex) {
+                            rowStyle = 'bg-rose-100 border-rose-400 text-rose-950';
+                            boxStyle = 'bg-rose-600 border-rose-700 text-white';
+                        }
+                    } else if (isChecked) {
+                        rowStyle = 'bg-emerald-600 text-white border-emerald-700 shadow-sm';
+                        boxStyle = 'bg-white border-white text-emerald-700';
+                    }
+
+                    return `
+                        <button type="button"
+                            onclick="selectSec1Option(${q.id}, ${idx})"
+                            class="w-full ${rowStyle} border-2 rounded-xl px-3 py-2 flex items-center justify-between gap-2 transition-all cursor-pointer">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-6 h-6 rounded-md border-2 ${boxStyle} flex items-center justify-center font-black text-base shrink-0">
+                                    ${isChecked || (state.isGraded && idx === q.correctIndex) ? '<span class="check-pop">✓</span>' : ''}
+                                </span>
+                                <span class="en-font font-extrabold text-sm sm:text-base tracking-wide">${optText}</span>
+                            </div>
+                            <span onclick="event.stopPropagation(); speakText('${optText.replace(/'/g, "\\'")}')"
+                                  class="text-xs opacity-75 hover:opacity-100 px-1.5 py-0.5 rounded bg-black/5"
+                                  title="استمع للنطق">🔊</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const html = `
+                    <article id="question-card-${q.id}" class="fantasy-card rounded-3xl border-2 ${cardBorder} p-4 shadow-sm transition-all">
+                        <div class="flex items-center justify-between mb-2.5">
+                            <span class="w-8 h-8 rounded-xl bg-emerald-700 text-white en-font font-black text-xs flex items-center justify-center shadow-sm">
+                                ${q.id}
+                            </span>
+                            <span class="text-xs font-extrabold text-slate-500" dir="rtl">${q.titleAr}</span>
+                        </div>
+
+                        <div class="grid grid-cols-12 gap-3 items-center">
+                            <!-- Left Picture Box with Dashed Green Border like Worksheet -->
+                            <div class="col-span-5 bg-slate-50/80 border-2 border-dashed border-emerald-400 rounded-2xl p-2 flex items-center justify-center">
+                                ${getCreatureIllustrationSvg(q.svgType)}
+                            </div>
+
+                            <!-- Right 3 Checkboxes Column -->
+                            <div class="col-span-7 space-y-2">
+                                ${optionsHtml}
+                            </div>
+                        </div>
+
+                        ${state.isGraded ? `
+                            <div class="mt-3 pt-2.5 border-t border-slate-200 text-xs font-extrabold text-slate-700 bg-amber-50/80 p-2.5 rounded-xl border border-amber-200 flex items-center justify-between gap-2" dir="rtl">
+                                <span>💡 ${q.ruleAr}</span>
+                                <span class="en-font font-black text-emerald-800 bg-white px-2.5 py-0.5 rounded-lg border border-emerald-300 shrink-0" dir="ltr">
+                                    ✓ ${q.options[q.correctIndex]}
+                                </span>
+                            </div>
+                        ` : ''}
+                    </article>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function selectSec1Option(qId, optIdx) {
+            state.sec1Answers[qId] = optIdx;
+            if (state.isGraded) {
+                state.isGraded = false;
+                document.getElementById('resultDiagnosticSection').classList.add('hidden');
+            }
+            playTone('tick');
+            const q = sec1CheckWordQuestions.find(item => item.id === qId);
+            if (q) speakText(q.options[optIdx]);
+            renderSection1CheckWord();
+            updateNavigatorAndProgress();
+        }
+
+        function renderSection2MissingLetter() {
+            const container = document.getElementById('sec2GridContainer');
+            container.innerHTML = '';
+
+            sec2MissingLetterQuestions.forEach(q => {
+                const chosenLetter = state.sec2Answers[q.id];
+                const isAnswered = chosenLetter !== undefined;
+
+                let cardBorder = 'border-slate-800 bg-white';
+                if (state.isGraded) {
+                    const isCorrect = chosenLetter === q.correctLetter;
+                    cardBorder = isCorrect ? 'border-emerald-600 bg-emerald-50/30' : 'border-rose-600 bg-rose-50/30';
+                } else if (isAnswered) {
+                    cardBorder = 'border-amber-500 bg-white shadow-md';
+                }
+
+                const letterButtonsHtml = q.options.map((ltr, idx) => {
+                    const isSelected = chosenLetter === ltr;
+                    let btnStyle = 'bg-slate-50 hover:bg-amber-50 text-slate-900';
+
+                    if (state.isGraded) {
+                        if (ltr === q.correctLetter) {
+                            btnStyle = 'bg-emerald-600 text-white';
+                        } else if (isSelected && ltr !== q.correctLetter) {
+                            btnStyle = 'bg-rose-600 text-white';
+                        }
+                    } else if (isSelected) {
+                        btnStyle = 'bg-amber-500 text-white shadow-inner';
+                    }
+
+                    return `
+                        <button type="button"
+                            onclick="selectSec2Letter(${q.id}, '${ltr}')"
+                            class="${btnStyle} ${idx === 0 ? 'border-r-2 border-slate-800' : ''} py-3 en-font font-black text-xl sm:text-2xl transition flex items-center justify-center gap-1 cursor-pointer">
+                            <span>${ltr}</span>
+                            ${isSelected ? '<span class="text-sm">✓</span>' : ''}
+                        </button>
+                    `;
+                }).join('');
+
+                const filledSlotHtml = isAnswered
+                    ? `<span class="inline-block px-1.5 mx-0.5 rounded bg-amber-100 text-amber-900 border-b-2 border-amber-600">${chosenLetter}</span>`
+                    : `<span class="inline-block px-2 mx-0.5 text-rose-600 border-b-4 border-slate-800">_</span>`;
+
+                const html = `
+                    <article id="question-card-${q.id}" class="fantasy-card rounded-2xl border-2 ${cardBorder} overflow-hidden shadow-sm flex flex-col justify-between">
+                        <!-- Top Image & Word Box -->
+                        <div class="p-3.5">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="w-7 h-7 rounded-lg bg-amber-700 text-white en-font font-black text-xs flex items-center justify-center">
+                                    ${q.id}
+                                </span>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] font-bold text-slate-500" dir="rtl">${q.meaningAr}</span>
+                                    <button type="button"
+                                        onclick="speakText('${q.fullWord}')"
+                                        class="text-xs bg-slate-100 hover:bg-amber-100 text-slate-700 px-2 py-1 rounded-lg border border-slate-200"
+                                        title="استمع للكلمة">🔊</button>
+                                </div>
+                            </div>
+
+                            <div class="my-1">
+                                ${getCreatureIllustrationSvg(q.svgType)}
+                            </div>
+
+                            <!-- Word with Missing Letter Slot -->
+                            <div class="text-center en-font font-black text-xl sm:text-2xl text-slate-900 tracking-wide mt-1">
+                                ${q.prefix}${filledSlotHtml}${q.suffix}
+                            </div>
+                        </div>
+
+                        <!-- Bottom 2-Column Letter Selector (Mimicking Worksheet Box) -->
+                        <div class="grid grid-cols-2 border-t-2 border-slate-800">
+                            ${letterButtonsHtml}
+                        </div>
+
+                        ${state.isGraded ? `
+                            <div class="p-2 bg-emerald-50 border-t border-emerald-200 text-center text-[11px] font-extrabold text-emerald-950" dir="rtl">
+                                ✓ الكلمة الصحيحة: <span class="en-font font-black" dir="ltr">${q.fullWord}</span> (${q.meaningAr})
+                            </div>
+                        ` : ''}
+                    </article>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function selectSec2Letter(qId, letter) {
+            state.sec2Answers[qId] = letter;
+            if (state.isGraded) {
+                state.isGraded = false;
+                document.getElementById('resultDiagnosticSection').classList.add('hidden');
+            }
+            playTone('pop');
+            const q = sec2MissingLetterQuestions.find(item => item.id === qId);
+            if (q && letter === q.correctLetter) {
+                speakText(q.fullWord);
+            }
+            renderSection2MissingLetter();
+            updateNavigatorAndProgress();
+        }
+
+        function renderSection3CircleMcq() {
+            const container = document.getElementById('sec3ListContainer');
+            container.innerHTML = '';
+
+            const letters = ['a', 'b', 'c'];
+
+            sec3CircleMcqQuestions.forEach(q => {
+                const selectedIdx = state.sec3Answers[q.id];
+                const isAnswered = selectedIdx !== undefined;
+                const chosenWord = isAnswered ? q.options[selectedIdx] : '............';
+
+                let rowBorder = 'border-slate-200 bg-white';
+                if (state.isGraded) {
+                    const isCorrect = selectedIdx === q.correctIndex;
+                    rowBorder = isCorrect ? 'border-emerald-500 bg-emerald-50/25' : 'border-rose-500 bg-rose-50/25';
+                } else if (isAnswered) {
+                    rowBorder = 'border-sky-400 bg-white shadow-sm';
+                }
+
+                const optionsHtml = q.options.map((optText, idx) => {
+                    const isCircled = selectedIdx === idx;
+                    let strokeColor = '#2563eb';
+                    let cellBg = 'bg-slate-50 hover:bg-sky-50 border-slate-200 text-slate-900';
+
+                    if (state.isGraded) {
+                        if (idx === q.correctIndex) {
+                            strokeColor = '#059669';
+                            cellBg = 'bg-emerald-50 border-emerald-400 text-emerald-950';
+                        } else if (isCircled && idx !== q.correctIndex) {
+                            strokeColor = '#e11d48';
+                            cellBg = 'bg-rose-50 border-rose-400 text-rose-950';
+                        }
+                    } else if (isCircled) {
+                        cellBg = 'bg-sky-50/90 border-sky-300 text-sky-950';
+                    }
+
+                    return `
+                        <button type="button"
+                            onclick="selectSec3CircleOption(${q.id}, ${idx})"
+                            class="circle-choice-btn ${isCircled || (state.isGraded && idx === q.correctIndex) ? 'circled' : ''} ${cellBg} border-2 rounded-2xl py-2.5 px-3 flex items-center justify-center gap-1.5 en-font font-extrabold text-sm sm:text-base cursor-pointer">
+                            <span class="text-sky-700 font-black">${letters[idx]}.</span>
+                            <span class="relative z-10">${optText}</span>
+                            <svg class="hand-circle-svg" viewBox="0 0 150 54" fill="none">
+                                <path class="hand-circle-path"
+                                      d="M 16 26 C 14 10, 134 8, 136 26 C 138 45, 20 48, 14 29 C 12 22, 26 14, 42 13"
+                                      stroke="${strokeColor}"
+                                      stroke-width="3.5"
+                                      stroke-linecap="round"
+                                      fill="none"/>
+                            </svg>
+                        </button>
+                    `;
+                }).join('');
+
+                const spokenSentence = `${q.before} ${isAnswered ? q.options[selectedIdx] : 'blank'} ${q.after}`.replace(/'/g, "\\'");
+
+                const html = `
+                    <article id="question-card-${q.id}" class="fantasy-card rounded-3xl border-2 ${rowBorder} p-4 shadow-sm transition-all">
+                        <div class="space-y-3" dir="ltr">
+                            <!-- Question Sentence Row -->
+                            <div class="flex items-center justify-between gap-2 bg-slate-50 rounded-2xl p-3 border border-slate-200">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-xl bg-sky-700 text-white en-font font-black text-xs flex items-center justify-center shrink-0">
+                                        ${q.id}
+                                    </span>
+                                    <p class="en-font font-black text-sm sm:text-base text-slate-900 leading-relaxed">
+                                        <span class="text-sky-700 mr-1">${q.localNum}-</span>
+                                        ${q.before}
+                                        <span class="inline-block px-2.5 py-0.5 mx-1 rounded-lg border-b-2 ${isAnswered ? 'bg-sky-100 text-sky-900 border-sky-600' : 'text-slate-400 border-slate-300'}">
+                                            ${chosenWord}
+                                        </span>
+                                        ${q.after}
+                                    </p>
+                                </div>
+                                <button type="button" onclick="speakText('${spokenSentence}')"
+                                    class="text-xs bg-white hover:bg-sky-100 text-slate-600 px-2.5 py-1.5 rounded-xl border border-slate-200 shrink-0"
+                                    title="استمع للجملة">
+                                    🔊
+                                </button>
+                            </div>
+
+                            <!-- 3 Options Row (a, b, c) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                                ${optionsHtml}
+                            </div>
+                        </div>
+
+                        ${state.isGraded ? `
+                            <div class="mt-3 pt-2.5 border-t border-slate-200 text-xs font-extrabold text-slate-800 bg-amber-50/70 p-2.5 rounded-xl border border-amber-200 flex flex-wrap items-center justify-between gap-2" dir="rtl">
+                                <span>💡 ${q.ruleAr}</span>
+                                <span class="en-font text-emerald-800 bg-white px-2.5 py-0.5 rounded-lg border border-emerald-300" dir="ltr">
+                                    ✓ ${letters[q.correctIndex]}. ${q.options[q.correctIndex]}
+                                </span>
+                            </div>
+                        ` : ''}
+                    </article>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function selectSec3CircleOption(qId, optIdx) {
+            state.sec3Answers[qId] = optIdx;
+            if (state.isGraded) {
+                state.isGraded = false;
+                document.getElementById('resultDiagnosticSection').classList.add('hidden');
+            }
+            playTone('tick');
+            renderSection3CircleMcq();
+            updateNavigatorAndProgress();
+        }
+
+        function isQuestionAnswered(id) {
+            if (id >= 1 && id <= 12) return state.sec1Answers[id] !== undefined;
+            if (id >= 13 && id <= 24) return state.sec2Answers[id] !== undefined;
+            if (id >= 25 && id <= 36) return state.sec3Answers[id] !== undefined;
+            return false;
+        }
+
+        function isQuestionCorrect(id) {
+            if (id >= 1 && id <= 12) {
+                const q = sec1CheckWordQuestions.find(item => item.id === id);
+                return q && state.sec1Answers[id] === q.correctIndex;
+            }
+            if (id >= 13 && id <= 24) {
+                const q = sec2MissingLetterQuestions.find(item => item.id === id);
+                return q && state.sec2Answers[id] === q.correctLetter;
+            }
+            if (id >= 25 && id <= 36) {
+                const q = sec3CircleMcqQuestions.find(item => item.id === id);
+                return q && state.sec3Answers[id] === q.correctIndex;
+            }
+            return false;
+        }
+
+        function updateNavigatorAndProgress() {
+            const grids = {
+                sec1: document.getElementById('navGridSec1'),
+                sec2: document.getElementById('navGridSec2'),
+                sec3: document.getElementById('navGridSec3')
+            };
+
+            Object.values(grids).forEach(g => { if (g) g.innerHTML = ''; });
+
+            let answeredCount = 0;
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            for (let id = 1; id <= 36; id++) {
+                const answered = isQuestionAnswered(id);
+                if (answered) answeredCount++;
+
+                let btnClass = 'bg-white text-slate-700 border-2 border-slate-200 hover:border-indigo-400';
+                if (state.isGraded) {
+                    if (isQuestionCorrect(id)) {
+                        correctCount++;
+                        btnClass = 'bg-emerald-500 text-white border-2 border-emerald-600 shadow-sm';
+                    } else {
+                        wrongCount++;
+                        btnClass = 'bg-rose-500 text-white border-2 border-rose-600 shadow-sm';
+                    }
+                } else if (answered) {
+                    btnClass = 'bg-indigo-600 text-white border-2 border-indigo-700 shadow-sm';
+                }
+
+                const btnHtml = `
+                    <button type="button"
+                        onclick="jumpToQuestion(${id})"
+                        class="${btnClass} h-8 rounded-xl en-font font-black text-xs transition flex items-center justify-center">
+                        ${id}
+                    </button>
+                `;
+
+                if (id <= 12) grids.sec1.insertAdjacentHTML('beforeend', btnHtml);
+                else if (id <= 24) grids.sec2.insertAdjacentHTML('beforeend', btnHtml);
+                else grids.sec3.insertAdjacentHTML('beforeend', btnHtml);
+            }
+
+            const pct = Math.round((answeredCount / 36) * 100);
+            document.getElementById('headerProgressText').textContent = `${answeredCount} / 36 سؤال`;
+            document.getElementById('headerProgressBar').style.width = `${pct}%`;
+            document.getElementById('boardAnsweredBadge').textContent = `${answeredCount} / 36`;
+
+            document.getElementById('legendUnanswered').textContent = 36 - answeredCount;
+            document.getElementById('legendAnswered').textContent = answeredCount;
+            document.getElementById('legendCorrect').textContent = state.isGraded ? correctCount : '-';
+            document.getElementById('legendWrong').textContent = state.isGraded ? wrongCount : '-';
+        }
+
+        function jumpToQuestion(id) {
+            filterTestSection('all');
+            const target = document.getElementById(`question-card-${id}`);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                target.classList.remove('pulse-focus');
+                void target.offsetWidth;
+                target.classList.add('pulse-focus');
+            }
+        }
+
+        function filterTestSection(sec) {
+            const sections = ['sec1', 'sec2', 'sec3'];
+            sections.forEach(s => {
+                const el = document.getElementById(`section-${s}`);
+                if (sec === 'all' || sec === s) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            ['all', ...sections].forEach(tab => {
+                const btn = document.getElementById(`tabBtn-${tab}`);
+                if (!btn) return;
+                if (tab === sec) {
+                    btn.className = 'section-tab flex-1 min-w-[130px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-indigo-600 text-white shadow';
+                } else {
+                    btn.className = 'section-tab flex-1 min-w-[130px] py-2.5 px-3 rounded-xl font-black text-xs sm:text-sm transition bg-slate-100 text-slate-700 hover:bg-slate-200';
+                }
+            });
+        }
+
+        function calculateDetailedScores() {
+            let s1 = 0, s2 = 0, s3 = 0;
+
+            for (let id = 1; id <= 12; id++) if (isQuestionCorrect(id)) s1++;
+            for (let id = 13; id <= 24; id++) if (isQuestionCorrect(id)) s2++;
+            for (let id = 25; id <= 36; id++) if (isQuestionCorrect(id)) s3++;
+
+            const total = s1 + s2 + s3;
+            const percent = Math.round((total / 36) * 100);
+
+            let cefrCode = 'A1';
+            let levelTitle = 'مبتدئ (A1 Beginner)';
+            let recommendation = 'ننصح بمراجعة مفردات الكائنات الحية والصفات الأساسية وحروفها الإملائية مع الاستماع للنطق الصوتي ثم إعادة المحاولة.';
+
+            if (percent >= 90) {
+                cefrCode = 'B2';
+                levelTitle = 'متقدم ومتميز جداً (B2 Star Achiever)';
+                recommendation = 'ما شاء الله! إتقان رائع ومميز لجميع المهارات: تمييز الكلمات بالصور، الحروف الإملائية الناقصة، واستخدام المفردات داخل الجمل.';
+            } else if (percent >= 75) {
+                cefrCode = 'B1';
+                levelTitle = 'متوسط مرتفع وجيد جداً (B1 Intermediate)';
+                recommendation = 'مستوى ممتاز! حصيلة لغوية وإملائية قوية مع أخطاء بسيطة يمكنك مراجعتها من الشرح التوضيحي أسفل كل سؤال.';
+            } else if (percent >= 55) {
+                cefrCode = 'A2';
+                levelTitle = 'فوق المبتدئ / أساسي (A2 Elementary)';
+                recommendation = 'مستوى جيد، ولكنك تحتاج إلى مزيد من التدريب على تهجئة الحروف الناقصة وربط الكلمات بمعانيها في الجمل.';
+            }
+
+            return { s1, s2, s3, total, percent, cefrCode, levelTitle, recommendation };
+        }
+
+        function renderAllSections() {
+            renderSection1CheckWord();
+            renderSection2MissingLetter();
+            renderSection3CircleMcq();
+            updateNavigatorAndProgress();
+        }
+
+        function gradePlacementTest() {
+            state.isGraded = true;
+            playTone('fanfare');
+            renderAllSections();
+
+            const scores = calculateDetailedScores();
+            const studentName = document.getElementById('studentNameInput').value.trim() || 'طالب متميز';
+            const studentClass = document.getElementById('studentClassInput').value.trim() || 'غير محدد';
+
+            document.getElementById('resultLevelBadge').innerHTML = `<span>${scores.cefrCode}</span>`;
+            document.getElementById('resultLevelTitle').textContent = scores.levelTitle;
+            document.getElementById('resultStudentLabel').textContent = `الطالب/ـة: ${studentName} • الصف: ${studentClass}`;
+
+            document.getElementById('scoreTotalDisplay').textContent = `${scores.total} / 36`;
+            document.getElementById('scorePercentDisplay').textContent = `${scores.percent}%`;
+            document.getElementById('scoreSec1Display').textContent = `${scores.s1} / 12`;
+            document.getElementById('scoreSec2Display').textContent = `${scores.s2} / 12`;
+            document.getElementById('scoreSec3Display').textContent = `${scores.s3} / 12`;
+
+            document.getElementById('resultRecommendationBox').innerHTML =
+                `📌 <strong>توصية الأستاذ ماجد السويهري:</strong> ${scores.recommendation}`;
+
+            const resultSec = document.getElementById('resultDiagnosticSection');
+            resultSec.classList.remove('hidden');
+            resultSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            populatePrintReport();
+            showToast(`🎉 تم تصحيح الاختبار! درجتك النهائية: ${scores.total} من 36 (${scores.percent}%)`);
+        }
+
+        function populatePrintReport() {
+            const scores = calculateDetailedScores();
+            const studentName = document.getElementById('studentNameInput').value.trim() || 'غير محدد';
+            const studentClass = document.getElementById('studentClassInput').value.trim() || 'غير محدد';
+
+            document.getElementById('printStudentName').textContent = studentName;
+            document.getElementById('printStudentClass').textContent = studentClass;
+            document.getElementById('printTotalScore').textContent = `${scores.total} / 36 (${scores.percent}%)`;
+            document.getElementById('printLevelResult').textContent = scores.levelTitle;
+            document.getElementById('printDateDisplay').textContent = `التاريخ: ${new Date().toLocaleDateString('ar-SA')}`;
+
+            let rowsHtml = '';
+
+            // 1. Section 1 (1-12)
+            sec1CheckWordQuestions.forEach(q => {
+                const sel = state.sec1Answers[q.id];
+                const ans = sel !== undefined ? q.options[sel] : 'لم يُجب';
+                const corr = q.options[q.correctIndex];
+                const ok = isQuestionCorrect(q.id);
+                rowsHtml += `
+                    <tr class="border-b border-slate-200">
+                        <td class="py-1 px-2 font-black text-center en-font">${q.id}</td>
+                        <td class="py-1 px-2 font-bold">س1: ضع علامة (✓)</td>
+                        <td class="py-1 px-2 text-right">${q.titleAr}</td>
+                        <td class="py-1 px-2 en-font font-bold text-center" dir="ltr">${ans}</td>
+                        <td class="py-1 px-2 en-font font-bold text-center text-emerald-800" dir="ltr">${corr}</td>
+                        <td class="py-1 px-2 font-black text-center ${ok ? 'text-emerald-700' : 'text-rose-700'}">${ok ? '✓' : '✗'}</td>
+                    </tr>
+                `;
+            });
+
+            // 2. Section 2 (13-24)
+            sec2MissingLetterQuestions.forEach(q => {
+                const ans = state.sec2Answers[q.id] || 'لم يُجب';
+                const ok = isQuestionCorrect(q.id);
+                rowsHtml += `
+                    <tr class="border-b border-slate-200 bg-slate-50/60">
+                        <td class="py-1 px-2 font-black text-center en-font">${q.id}</td>
+                        <td class="py-1 px-2 font-bold">س2: الحرف الناقص</td>
+                        <td class="py-1 px-2 en-font text-left" dir="ltr">${q.prefix}_${q.suffix} (${q.meaningAr})</td>
+                        <td class="py-1 px-2 en-font font-bold text-center" dir="ltr">${ans}</td>
+                        <td class="py-1 px-2 en-font font-bold text-center text-emerald-800" dir="ltr">${q.correctLetter} (${q.fullWord})</td>
+                        <td class="py-1 px-2 font-black text-center ${ok ? 'text-emerald-700' : 'text-rose-700'}">${ok ? '✓' : '✗'}</td>
+                    </tr>
+                `;
+            });
+
+            // 3. Section 3 (25-36)
+            sec3CircleMcqQuestions.forEach(q => {
+                const sel = state.sec3Answers[q.id];
+                const ans = sel !== undefined ? q.options[sel] : 'لم يُجب';
+                const corr = q.options[q.correctIndex];
+                const ok = isQuestionCorrect(q.id);
+                rowsHtml += `
+                    <tr class="border-b border-slate-200">
+                        <td class="py-1 px-2 font-black text-center en-font">${q.id}</td>
+                        <td class="py-1 px-2 font-bold">س3: ضع دائرة</td>
+                        <td class="py-1 px-2 en-font text-left" dir="ltr">${q.before} ___ ${q.after}</td>
+                        <td class="py-1 px-2 en-font font-bold text-center" dir="ltr">${ans}</td>
+                        <td class="py-1 px-2 en-font font-bold text-center text-emerald-800" dir="ltr">${corr}</td>
+                        <td class="py-1 px-2 font-black text-center ${ok ? 'text-emerald-700' : 'text-rose-700'}">${ok ? '✓' : '✗'}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('printAnswersTableContainer').innerHTML = `
+                <table class="w-full border-collapse border border-slate-300">
+                    <thead>
+                        <tr class="bg-slate-100 border-b-2 border-slate-300 text-slate-800">
+                            <th class="py-1 px-2 border border-slate-300">#</th>
+                            <th class="py-1 px-2 border border-slate-300">القسم</th>
+                            <th class="py-1 px-2 border border-slate-300">السؤال / الفقرة</th>
+                            <th class="py-1 px-2 border border-slate-300">إجابة الطالب</th>
+                            <th class="py-1 px-2 border border-slate-300">الإجابة الصحيحة</th>
+                            <th class="py-1 px-2 border border-slate-300">التقييم</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rowsHtml}</tbody>
+                </table>
+            `;
+        }
+
+        function syncStudentInfo() {
+            populatePrintReport();
+        }
+
+        function printStudentResult() {
+            if (!state.isGraded) {
+                gradePlacementTest();
+            } else {
+                populatePrintReport();
+            }
+            setTimeout(() => {
+                window.print();
+            }, 150);
+        }
+
+        function resetEntireTest() {
+            state.sec1Answers = {};
+            state.sec2Answers = {};
+            state.sec3Answers = {};
+            state.isGraded = false;
+
+            document.getElementById('resultDiagnosticSection').classList.add('hidden');
+            renderAllSections();
+            showToast('🔄 تم تصفير جميع الإجابات للبدء من جديد');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastMessage');
+            toast.textContent = msg;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderAllSections();
+            populatePrintReport();
+        });
+    </script>
+</body>
+</html>
